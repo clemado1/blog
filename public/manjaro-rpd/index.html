@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <!-- SEO -->
+        
+        <title> Manjaro Linux에서 Windows 원격 접속 |  </title>
+        
+
+        <!-- Enable responsiveness on mobile devices-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" >
+
+        <!-- js -->
+        <script src="gallant-goldwasser-cea001.netlify.app/theme_selector.js"></script>
+        <script src="https://kit.fontawesome.com/e307e34624.js" crossorigin="anonymous"></script>
+
+        <!--  css -->
+        <link id="themeCSS" rel="stylesheet"
+                            href="gallant-goldwasser-cea001.netlify.app/default.css"
+                            />
+
+        <!-- fonts -->
+        <!-- preload  -->
+        <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:200,300,300i,400,500,500i,600,700,800,900|Raleway" as="style">
+        <!-- load -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,300,300i,400,500,500i,600,700,800,900|Raleway">
+        
+    </head>
+
+    <body onload="main();">
+      
+<input type="checkbox" id="openSidebarMenu" class="openSidebarMenu">
+<label class="menu cross menu--1" for="openSidebarMenu">
+    <svg viewBox="0 0 75 75" xmlns="https://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="30" />
+        <path class="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
+        <path class="line--2" d="M0 50h70" />
+        <path class="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
+    </svg>
+</label>
+
+<div id="sidebarMenu">
+    <div class="menu_wrapper">
+        <ul class="sidebarMenuInner">
+            <li>
+                <a href="gallant-goldwasser-cea001.netlify.app" ></a>
+                <div class="menu_div" ></div>
+            </li>
+            
+            
+
+
+
+<li >
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;clemado1" target="_blank">clemado1</a>
+    <i class="fab fa-github"></i>
+</li>
+
+
+
+<li >
+    <a href="https:&#x2F;&#x2F;twitter.com&#x2F;clemado1" target="_blank">@clemado1</a>
+    <i class="fab fa-twitter"></i>
+</li>
+
+
+
+<li >
+    <a href="mailto:clemado1@gmail.com" target="_blank">contact</a>
+    <i class="fas fa-envelope"></i>
+</li>
+
+
+
+<li >
+    <a href="https:&#x2F;&#x2F;instagram.com&#x2F;clemdis" target="_blank">clemdis</a>
+    <i class="fab fa-instagram"></i>
+</li>
+
+
+
+
+
+        </ul>
+    </div>
+</div>
+
+
+
+      
+<nav id="overlord" class="overlord" >
+  
+  
+<figure class="mini_logo ">
+    <a href="gallant-goldwasser-cea001.netlify.app" style="background-image: url(/img/profile.png)"></a>
+</figure>
+<h5>
+    <a href="gallant-goldwasser-cea001.netlify.app"></a>
+</h5>
+
+  
+
+
+
+</nav>
+
+<section class="post_container">
+  <article>
+    
+      <h1 class="article_title"><a href="gallant-goldwasser-cea001.netlify.app&#x2F;manjaro-rpd&#x2F;" id="article_link">Manjaro Linux에서 Windows 원격 접속</a></h1>
+      
+<ul class="frontmatter frontmatter_page" id="frontmatter">
+    <li>
+        <time class="article_time" datetime="2021-01-04">January 04, 2021</time>
+    </li>
+    <span class="dotDivider"></span>
+    <li> 130 words </li>
+    <span class="dotDivider" ></span>
+    <li> 1 min </li>
+</ul>
+
+      <p>회사에서 발급받은 계정으로 VPN 연결 후 원격 접속까지 테스트했다. 회사 VPN 솔루션은 <a href="https://www.forticlient.com/repoinfo">FortiClient</a>인데 Arch계열 지원은 없다. 대신 <a href="https://github.com/adrienverge/openfortivpn">openfortivpn</a>을 사용했고 토큰 접속까지 문제 없이 가능했다. </p>
+<h3 id="ssihaeng-hwanggyeon">실행 환경</h3>
+<ul>
+<li>접속지: Manjaro Linux, KDE Plasma</li>
+<li>대상지: Windows 10</li>
+<li>사용 프로그램: <code>openfortivpn</code>, <code>Remmina</code></li>
+</ul>
+<h1 id="openfortivpn">openfortivpn</h1>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">sudo</span><span> pacman</span><span style="color:#bf616a;"> -S</span><span> openfortivpn
+</span><span>
+</span><span style="color:#65737e;"># 접속 정보 등록
+</span><span style="color:#96b5b4;">cd</span><span> /etc/openfortivpn
+</span><span style="color:#bf616a;">sudo</span><span> vim ./config
+</span></code></pre>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#65737e;">### config file for openfortivpn, see man openfortivpn(1) ###
+</span><span>
+</span><span style="color:#bf616a;">host</span><span> = 
+</span><span style="color:#bf616a;">port</span><span> = 
+</span><span style="color:#bf616a;">username</span><span> = 
+</span><span style="color:#bf616a;">password</span><span> = 
+</span></code></pre>
+<p><code>openfortivpn</code> 실행</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">sudo</span><span> openfortivpn
+</span></code></pre>
+<p>처음 실행 시 게이트웨이 인증서 에러가 발생해서 <code>config</code> 파일에 옵션을 하나 더 추가했다.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">Gateway</span><span> certificate validation failed, and the certificate digest is not in the local whitelist.
+</span><span>
+</span><span style="color:#65737e;"># config 추가
+</span><span style="color:#bf616a;">trusted-cert</span><span> =
+</span></code></pre>
+<h1 id="remmina">Remmina</h1>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>sudo pacman -S remmina
+</span></code></pre>
+<p>실행 후 <code>new connection</code> - <code>RDP</code>로 서버 및 사용자 정보 입력 및 실행</p>
+
+      
+  </article>
+</section>
+
+
+       
+
+      <footer>
+        
+          
+          
+<figure class="mini_logo ">
+    <a href="gallant-goldwasser-cea001.netlify.app" style="background-image: url(/img/profile.png)"></a>
+</figure>
+<h5>
+    <a href="gallant-goldwasser-cea001.netlify.app"></a>
+</h5>
+
+          
+<ul class="social_list foot_list">
+    
+
+
+
+<li class="button extra_small font_faint">
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;clemado1" target="_blank">clemado1</a>
+    <i class="fab fa-github"></i>
+</li>
+
+
+
+<li class="button extra_small font_faint">
+    <a href="https:&#x2F;&#x2F;twitter.com&#x2F;clemado1" target="_blank">@clemado1</a>
+    <i class="fab fa-twitter"></i>
+</li>
+
+
+
+<li class="button extra_small font_faint">
+    <a href="mailto:clemado1@gmail.com" target="_blank">contact</a>
+    <i class="fas fa-envelope"></i>
+</li>
+
+
+
+<li class="button extra_small font_faint">
+    <a href="https:&#x2F;&#x2F;instagram.com&#x2F;clemdis" target="_blank">clemdis</a>
+    <i class="fab fa-instagram"></i>
+</li>
+
+
+
+
+
+</ul>
+
+          
+<select id="theme_selector" size=1>
+    <option value="default" selected>default</option>
+    
+    <option value="my-awesome-theme">my-awesome-theme</option>
+    
+</select>
+
+        
+      </footer>
+    </body>
+</html>
