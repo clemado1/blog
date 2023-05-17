@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-Allow: /
-Sitemap: gallant-goldwasser-cea001.netlify.app/sitemap.xml
