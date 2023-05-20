@@ -46,7 +46,7 @@ category="diary"
 
 스터디의 구체적인 진행 방향을 다 같이 모여 토론했다. 이 때는 Github의 Discussions 기능을 활용해서 스터디 시간 전에 글을 남겨주길 부탁했다. 글은 일부 스터디원만 썼지만 설문 조사로 대강의 방향은 정해졌기 때문에 의견을 남겨준 사람을 존중했다. Github의 Discussions의 동의나 반응 버튼을 활용하니 반응도 뜨거웠다.
 
-![image](https://github.com/clemado1/blog/assets/41099541/fc51ab87-7bce-47f2-925d-d5189eb8065a)
+![image](/img/study_review_01.png)
 
 ## 6. 우리의 시간
 
@@ -64,4 +64,4 @@ category="diary"
 - 발표자가 정리한 내용을 발표한다.
 - 모두가 Github Discussions을 보면서 질문에 대한 답을 토론한다.
 
-![image](https://github.com/clemado1/blog/assets/41099541/b2353f39-08f9-44b2-a9f3-622a627b24bc)
+![image](/img/study_review_02.png)
