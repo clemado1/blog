@@ -62,7 +62,7 @@ category="diary"
 - 리뷰 : PR 승인
 - QA : 내부 테스트
 
-# 프로젝트 개발
+# 프로젝트 개발 및 회고
 
 ![image](/img/side_project_review_06.png)
 
@@ -90,9 +90,32 @@ JWT는 인증 정보를 클라이언트에서 관리하다보니 서버에서는
 
 클라이언트에서 인증 정보를 꺼내어 서버에 확인 받은 다음 API를 호출하고 컴포넌트를 그려야했기 때문에 `React.js`나 `Vue.js`와 같은
 프레임워크/라이브러리의 도움이 필요했다. 그나마 React가 익숙한터라 React를 하고 싶지만 아직 회사에서는 React를 도입하지 않았기 때문에 쓸 수 없었다.
-그래서 간편히 CDN으로 Import할 수 있고 모던 자바스크립트로 구성할 수 있는 `[Alpine.js](https://alpinejs.dev/)`를 선택했다.
+그래서 간편히 CDN으로 Import할 수 있고 모던 자바스크립트로 구성할 수 있는 [Alpine.js](https://alpinejs.dev/)를 선택했다.
 React보다 코드가 다소 늘어나지만 사용하는 경험은 나쁘지 않았다. 
 
+## Data
 
-# 프로젝트 회고
+회사에서는 Mybatis에 과거 MVC 모델을 사용하고 있었다. Model을 View에서도 사용하고 DB에서도 사용하다보니 관리가 전혀되지 않고 
+클래스 변수가 무지막지하게 늘어나기 마련이었다. 그리고 여러가지 RDBMS를 써야하는 탓에 JPA를 쓰자는 고려는 있었지만 아직 도입되지 않고 있었다.
+그래서 신규 프로젝트는 Mybatis를 사용하되, JPA를 고려해서 디자인해야했다. 그래서 아래와 같이 Mybatis ResultMap을 사용하여 JPA를 쓴다고 가정하고 도메인을 설계했다.
+
+### 변경된 것
+
+- Mybatis ResultMap 사용
+- DB Layer / View Layer 분리
+- Lombok, Enum 사용
+
+### 개선된 것
+
+- 데이터를 안전하게 사용
+- Validation 용이
+
+![image](/img/side_project_review_07.png)
+
+Mybatis의 ResultMap이 사용하기 까다로워서 관련 에러만 대처하면 오히려 깔끔해져서 개발이 더 편해졌다. 그러나 개발이 진행되다보니 문제가 하나 생겼다.
+JPA에서는 `Pageable`이나 `Sort`를 제공하지만 Mybatis를 사용하면 Pagenation이나 Sort를 쿼리와 함께 직접 구현해야만 했다.
+고민하다가 사용한 방법이 직접 Spring Data에 있는 `Pageable`과 `Sort` 인터페이스를 가져와서 구현체만 바꿔치기 했다.
+만약 나중에 JPA를 도입한다면 `import`만 바꾸면 작동할 것이다. 
+일종의 `템플릿 메서드 패턴`에서 착안했는데, 그 때 한창 디자인 패턴을 공부하고 있었기에 떠올릴 수 있었다.
+
 
