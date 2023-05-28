@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://gallant-goldwasser-cea001.netlify.app"
+base_url = "https://clemado.one"
 
 theme = "Ergo"
 
